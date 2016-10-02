@@ -1,0 +1,8 @@
+<div id="page-btn">
+	<a <?php if($_GET['c'] == 'Member' && $_GET['a'] == 'info') echo 'class="active"';else echo 'href="'.\TzlPHP\Url::U('Member/info').' " '; ?>>个人信息</a>
+	<a <?php if($_GET['c'] == 'Member' && $_GET['a'] == 'password') echo 'class="active"';else echo 'href="'.\TzlPHP\Url::U('Member/password').'"'; ?>>修改密码</a>
+	<a <?php if($_GET['c'] == 'Category' && $_GET['a'] == 'lst') echo 'class="active"';else echo 'href="'.\TzlPHP\Url::U('Category/lst').'"'; ?>>分类管理</a>
+	<a <?php if($_GET['c'] == 'Category' && $_GET['a'] == 'add') echo 'class="active"';else echo 'href="'.\TzlPHP\Url::U('Category/add').'"'; ?>>添加分类</a>
+	<a <?php if($_GET['c'] == 'Blog' && $_GET['a'] == 'lst') echo 'class="active"';else echo 'href="'.\TzlPHP\Url::U('Blog/lst').'"'; ?>>日志管理</a>
+	<a <?php if($_GET['c'] == 'Blog' && $_GET['a'] == 'add') echo 'class="active"';else echo 'href="'.\TzlPHP\Url::U('Blog/add').'"'; ?>>写日志</a>
+</div>

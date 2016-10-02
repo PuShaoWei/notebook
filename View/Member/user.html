@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-个人页</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+</head>
+<body>
+
+   <include file="Common/_top" />
+<!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+	<?php include('View/_menu.html'); ?>
+
+	<div id="page-content">
+		<form method="">
+			<div class="form-row">
+				<label>头像：</label>
+				<input type="file">
+			</div>
+			<div class="form-row">
+				<label>昵称：</label>
+				<input type="text">
+			</div>
+			<div class="form-row">
+				<label>年龄：</label>
+				<input type="text">
+			</div>
+			<div class="form-row">
+				<label>性别：</label>
+				<input type="radio" value="保密" checked="checked"> 保密
+				<input type="radio" value="男"> 男
+				<input type="radio" value="女"> 女
+			</div>
+			<div class="form-row">
+				<input type="submit" value="提交" class="btn">
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 页脚 -->
+<?php include('View/_footer.html'); ?>

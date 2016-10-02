@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>操作失败</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<h1> >_<：<?=$error?></h1>
+<p>
+	<span id='se'>3</span>秒之后跳转。
+	点击<a href="<?php if($url=='') echo 'javascript:history.back();';else echo $url; ?>">立即跳转</a>。
+</p>
+
+</body>
+</html>
+
+<script>
+var url = "<?=$url?>";
+var next = 2;
+var se = document.getElementById('se');
+setInterval(function(){
+	se.innerHTML = next--;
+	if(next < 0)
+	{
+		if(url == '')
+			history.back();
+		else
+			location.href = url;
+	}
+}, 1000);
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-内容页</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+</head>
+<body>
+
+<?php include('View/_header.html'); ?>
+
+<!-- 页面主体 -->
+<div id="login-container">
+	<h1>注册-<a href="index.php?c=login&a=login">登录</a></h1>
+	<form method="POST">
+		<input name="username" class="regist-name" type="text" placeholder="姓名">
+		<input name="tel" type="text" placeholder="手机">
+		<input name="password" class="regist-password" type="password" placeholder="密码">
+		<input name="cpassword" class="regist-password" type="password" placeholder="再次输入密码">
+		<input name="captcha" class="regist-code" type="text" placeholder="请输入最后的验证码">
+		<input type="submit" value="注册">
+		<img onclick="this.src='index.php?c=Login&a=captcha&'+Math.random();" style="margin-top: 5px;cursor: pointer;" src="index.php?c=Login&a=captcha">
+	</form>
+</div>
+
+<?php include('View/_footer.html'); ?>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-内容页</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+</head>
+<body>
+
+<?php include('View/_header.html'); ?>
+
+<!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+	<div class="left-col">
+		<div id="page-nav">
+			<i class="Hui-iconfont">&#xe625;</i>
+			<a href="/">首页</a> >> 详情页
+		</div>
+	
+		<h2 id="art-title">	<?=$blogData['title'];?></h2>
+			<p class="desc m" style="margin-bottom: 20px;	color: #756F71;">发表于：<?=$blogData['addtime']?><span style="float: right; 	color: #7D95AD; font-size: 13px;" ;>阅读 <?=$blogData['display']?> · 评论 34 · 赞 159</span></p>	
+
+		<div id="art-content">
+			<?=$blogData['content'];?>
+		</div>
+		<div class="ds-share flat" data-thread-key="<?=$_GET['id'];?>" data-title="<?=$blogData['title'];?>" data-images=" <$blogData['logo']?>" data-content="<?=$blogData['short_content'];?>" data-url="<?='http://www.notebook.com'.$_SERVER['REQUEST_URI'];?>">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-32">
+      	
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      	
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<?=$_GET['id'];?>" data-title="<?=$blogData['title'];?>" data-url="<?='http://www.notebook.com'.$_SERVER['REQUEST_URI'];?>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"psv1995"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+	</div>
+	<div class="right-col">
+
+		<button id="btn_zan" class="btn"><i class="Hui-iconfont">&#xe66d;</i>赞一下（<span id="zan_num"><?=$blogData['zan_num']?></span>）</button>
+
+		<h2 class="sub-title">
+			<i class="Hui-iconfont">&#xe6cf;</i>
+			精品排行榜
+		</h2>
+		<ul class="art-paihang">
+					<?php foreach($best as $k=>$v): ?>
+			<li><a href='<?=\TzlPHP\Url::U("Index/article?id=$v[id] ")?> '><?=$v['title']?></a></li>
+					<?php endforeach; ?>
+						<h2 class="sub-title">
+			<i >&clubs;</i>
+			热门评论
+		</h2>
+		<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"psv1995"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+		</ul>
+	</div>
+</div>
+
+
+<?php include('View/_footer.html'); ?>
+<script type="text/javascript" src="./Public/Js/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript">
+//Js 获取Url参数
+	
+function getQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return unescape(r[2]); return null; 
+} 
+
+
+
+$('#btn_zan').click(function(){
+
+	$.ajax({
+		//请求方式
+		type:"GET",
+		//请求地址
+		url:"/index.php?c=Index&a=ajaxZan&id="+getQueryString('id'),
+		//当前面AJAX执行结束就开始调用success
+		success:function(data)
+		{
+			if (data == 1) 
+			{	
+				var num=parseInt($('#zan_num').html())+ 1;
+				alert('感谢您的支持');
+				$('#zan_num').html(num);
+
+			} 
+			
+			else if(data== -1)
+			{
+				alert('登录后才可以赞');
+				location.href='index.php?c=Login&a=login';
+			}
+			else if(data==-2)
+			{
+				alert('已经赞过了');
+			}
+		}
+	});
+
+});
+
+</script>

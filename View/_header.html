@@ -1,0 +1,42 @@
+<!-- 最上面蓝条 -->
+<div id="top_banner">
+	<div class="wrapper">
+		<span id="logo"><a href="/"><?=\TzlPHP\TzlPHP::$C['WEB_NAME']?></a></span>
+		<form id="search-form" action="/index.php">
+			<input type="hidden" name="c" value="Index">
+			<input type="hidden" name="a" value="search">
+			<input value="<?=isset($_GET['key'])?$_GET['key']:''?>" name="key" id="search-input" type="text" placeholder="输入要搜索的内容"><button id="search-btn"><i class="Hui-iconfont">&#xe665;</i></button>
+		</form>
+		<div id="user-login">
+			<div id="user-login-info">
+				<img style="width: 30px;height: 30px;border-radius: 15px;" src="/Public/Image/lion.jpg">
+				<span id="uname">游客</span>
+				<ul class="droplist" id="login-menu">
+					<li><i class="Hui-iconfont">&#xe63f;</i> <a href="<?=\TzlPHP\Url::U('Login/login')?>">登录</a></li>
+					<li><i class="Hui-iconfont">&#xe63f;</i> <a href="<?=\TzlPHP\Url::U('Login/regist')?>">注册</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript" src="/Public/Js/jquery-1.11.3.min.js"></script>
+<script>
+// ajax判断登录 
+$.ajax({
+	type : "GET",
+	url : "/index.php?c=Login&a=chkLogin",
+	dataType : "json",
+	success : function(data)
+	{
+		if(data.ok == 1)
+		{
+			// 用登录之后的按钮覆盖原来未登录的按钮
+			$("#login-menu").html('<li><i class="Hui-iconfont">&#xe60d;</i> <a href="<?=\TzlPHP\Url::U('Member/info')?>">个人信息</a></li><li><i class="Hui-iconfont">&#xe63f;</i> <a href="<?=\TzlPHP\Url::U('Member/password')?>">修改密码</a></li><li><i class="Hui-iconfont">&#xe681;</i> <a href="<?=\TzlPHP\Url::U('Category/lst')?>">分类管理</a></li><li><i class="Hui-iconfont">&#xe681;</i> <a href="<?=\TzlPHP\Url::U('Category/add')?>">添加分类</a></li><li><i class="Hui-iconfont">&#xe623;</i> <a href="<?=\TzlPHP\Url::U('Blog/lst')?>">日志管理</a></li><li><i class="Hui-iconfont">&#xe70c;</i> <a href="<?=\TzlPHP\Url::U('Blog/add')?>">写日志</a></li><li><i class="Hui-iconfont">&#xe634;</i> <a href="<?=\TzlPHP\Url::U('Login/logout')?>">退出</a></li>');
+			$("#uname").html(data.username);
+		}
+	}
+});
+</script>

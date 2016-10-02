@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-修改分类</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+</head>
+<body>
+
+<?php include('View/_header.html'); ?>
+
+<!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+	<?php include('View/_menu.html'); ?>
+	<div id="page-content">
+		<form method="POST">
+			<div class="form-row">
+				<label>分类名称：</label>
+				<input name="cat_name" type="text" value="<?=$info['cat_name']?>">
+			</div>
+			<div class="form-row">
+				<input type="submit" value="修改分类" class="btn">
+			</div>
+		</form>
+	</div>
+</div>
+
+<?php include('View/_footer.html'); ?>

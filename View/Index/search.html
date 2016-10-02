@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-搜索</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+</head>
+<body>
+
+<?php include('View/_header.html'); ?>
+<!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+	<div class="left-col">
+		<div id="page-nav">
+			<i class="Hui-iconfont">&#xe625;</i>
+			<a href="/">首页</a> >> 搜索 <strong><?=$_GET['key']?></strong> 的结果
+		</div>
+
+	<?php if($blogData!=''):?>
+	<?php foreach($blogData as $k=>$v): ?>
+		<ul class="art-list">
+			<li class="clearfix">
+				<img class="face" src="public/image/lion.jpg">	
+				<div class="art-desc">
+				<p class="desc"><a class="title" href='<?=\TzlPHP\Url::U("Index/article?id=$v[id] ")?>' > <?=$v['title']?></a></p>
+				<p class="desc m"><span class="name"><?=$v['username']?></span> 发表于：<?=$v['addtime']?></p>	
+				<div style="width: 100%;height:130px;float: left;">		
+				<img  src=" <?=!empty($v['logo'])?$v['logo']:'/Public/Image/wt.jpeg' ?> ">				
+				<p class="desc c"><?=$v['short_content']?></p>
+				</div>
+				<p class="desc d">阅读 <?=$v['display']?> · 评论 34 · 赞<?=$v['zan_num']?></p>
+				</div>
+			</li>	
+		</ul>
+	<?php endforeach ?>	
+		<?php endif;?>
+
+
+
+
+
+
+	
+		<ul class="page">
+	<?=$pageRet['pageString']?>	
+		</ul>
+	</div>
+
+	<div class="right-col">
+		<h2 class="sub-title">
+			<i class="Hui-iconfont">&#xe6cf;</i>
+			精品排行榜
+		</h2>
+		<ul class="art-paihang">
+					<?php foreach($best as $k=>$v): ?>
+			<li><a href='<?=\TzlPHP\Url::U("Index/article?id=$v[id] ")?> '><?=$v['title']?></a></li>
+					<?php endforeach; ?>
+						<h2 class="sub-title">
+			<i class="Hui-iconfont">&clubs;</i>
+			热门评论
+		</h2>
+		<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"psv1995"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+		</ul>
+	</div>
+</div>
+
+<?php include('View/_footer.html'); ?>

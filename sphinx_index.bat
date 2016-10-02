@@ -1,0 +1,2 @@
+G:\coreseek\bin\indexer.exe -c G:\coreseek\sphinx.conf blog_delta_index --rotate
+G:\coreseek\bin\indexer.exe -c G:\coreseek\sphinx.conf --merge blog_index blog_delta_index --rotate --merge-dst-range is_delete 0 0

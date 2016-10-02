@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-日志列表</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+
+</head>
+<body>
+
+<?php include('View/_header.html'); ?>
+
+
+<!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+
+	<?php include('View/_menu.html'); ?>
+<div class="search">
+<form  method="GET">
+	<input type="hidden" name="c" value="Blog" 	>
+	<input type="hidden" name="a" value="Lst" 	>
+	分类：<select name="cid"><option value="">所有分类
+	<?php foreach($catData as $v): 
+		if(isset($_GET['cid'])&&$_GET['cid']==$v['id'])
+
+		$select='selected="selected"';
+		else
+		$select='';	   
+		      ?>
+		<option <?=$select?> value="<?=$v['id']?>"><?=$v['cat_name']?></option>
+	<?php endforeach; ?>
+
+	</select>
+	标题：<input type="text" name="t" value="<?=isset($_GET['t'])?$_GET['t']:'' ?>">
+	发表时间：从<input class="Wdate" input type="text" name="st"onClick="WdatePicker()" value="<?=isset($_GET['st'])?$_GET['st']:'' ?>">
+			  到<input class="Wdate" input type="text" name="et"onClick="WdatePicker() "value="<?=isset($_GET['et'])?$_GET['et']:'' ?>">
+
+
+			  <input type="submit" value="搜索">
+</form>		
+
+</div>
+	<div id="page-content">
+		<table class="data-list">
+			<tr>
+				<th width="120">所在分类</th>
+				<th>标题</th>
+				<th width="70">是否公开</th>
+				<th width="185">发表时间</th>
+				<th width="90">操作</th>
+			</tr>
+			<?php foreach($data as $v): ?>
+			<tr>
+				<td><?=$v['cat_name']?></td>
+				<td><?=$v['title']?></td>
+				<td><?=$v['is_public']?></td>
+				<td><?=$v['addtime']?></td>
+				<td>
+					<a href="<?=\TzlPHP\Url::U('edit?id='.$v['id'])?>">修改</a>
+					<a onclick="return confirm('确定要删除吗？');" href="<?=\TzlPHP\Url::U('delete?id='.$v['id'])?>">删除</a>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</table>
+	<?=$pageRet['pageString']?>	
+	</div>
+</div>
+
+<?php include('View/_footer.html'); ?>
+
+<script language="javascript" type="text/javascript" src="./public/My97DatePicker/WdatePicker.js"></script>
+
+

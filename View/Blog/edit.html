@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-修改日志</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/public/css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/public/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/public/css/hui-icon/iconfont.css">
+</head>
+<body>
+<?php  include('View/_header.html'); ?>
+<!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+<?php include('View/_menu.html'); ?>
+	<div id="page-content">
+		<form method="POST">
+			<div class="form-row" >
+				<label>日志分类：</label>
+				<select name="cat_id">
+					<option value="">默认分类</option>
+					<?php foreach($catData as $v): 
+						//判断当前分类是否是这个分类 如果是 就被选中
+					if($editData['cat_id']==$v['id'])							
+							$select='selected="selected"';
+					else
+							$select='';				
+						?>
+						<option <?=$select?> value="<?=$v['id']?>"><?=$v['cat_name']?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+		
+			<div class="form-row">
+				<label>日志标题：</label>
+				<input value="<?=$editData['title'];?>" type="text" name="title" style="width: 100%;padding: 5px;">
+			</div>
+			<div class="form-row">
+				<label>日志内容：</label>
+				  <script id="content" name="content" type="text/plain" style="width:100%;height:300px;"><?=$editData['content'];?></script>
+			</div>
+			<div class="form-row">
+				<label>是否公开：</label>
+				<input  name="is_public" type="radio" value="是" checked="checked"  <?php if($editData['is_public']=='是') echo	'checked';  ?>  > 公开
+				<input  name="is_public"  type="radio" value="否" <?php if($editData['is_public']=='否') echo 'checked'; ?> > 不公开
+			</div>
+
+			<div class="form-row">
+				<input type="submit" value="发布" class="btn">
+			</div>
+		</form>
+	</div>		    
+</div>
+<?php include('View/_footer.html'); ?>
+
+    <script type="text/javascript" charset="utf-8" src="./public/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./public/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="./public/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+	
+ UE.getEditor('content').setHeight(300);
+		
+
+   
+</script>   

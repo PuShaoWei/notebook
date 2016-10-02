@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>个人博客-首页</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/H-ui.reset.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/index.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Css/hui-icon/iconfont.css">
+</head>
+<body>
+
+
+<!-- 最上面蓝条 -->
+<div id="top_banner">
+	<div class="wrapper">
+		<span id="logo"><a href="/">逼乎 - 爱上每天装逼的习惯</a></span>
+		<form id="search-form" action="/index.php">
+			<input type="hidden" name="c" value="Index">
+			<input type="hidden" name="a" value="search">
+			<input value="" name="key" id="search-input" type="text" placeholder="输入要搜索的内容"><button id="search-btn"><i class="Hui-iconfont">&#xe665;</i></button>
+		</form>
+		<div id="user-login">
+			<div id="user-login-info">
+				<img style="width: 30px;height: 30px;border-radius: 15px;" src="/Public/Image/lion.jpg">
+				<span id="uname">游客</span>
+				<ul class="droplist" id="login-menu">
+					<li><i class="Hui-iconfont">&#xe63f;</i> <a href="/index.php?c=Login&a=login">登录</a></li>
+					<li><i class="Hui-iconfont">&#xe63f;</i> <a href="/index.php?c=Login&a=regist">注册</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript" src="/Public/Js/jquery-1.11.3.min.js"></script>
+<script>
+// ajax判断登录 
+$.ajax({
+	type : "GET",
+	url : "/index.php?c=Login&a=chkLogin",
+	dataType : "json",
+	success : function(data)
+	{
+		if(data.ok == 1)
+		{
+			// 用登录之后的按钮覆盖原来未登录的按钮
+			$("#login-menu").html('<li><i class="Hui-iconfont">&#xe60d;</i> <a href="/index.php?c=Member&a=info">个人信息</a></li><li><i class="Hui-iconfont">&#xe63f;</i> <a href="/index.php?c=Member&a=password">修改密码</a></li><li><i class="Hui-iconfont">&#xe681;</i> <a href="/index.php?c=Category&a=lst">分类管理</a></li><li><i class="Hui-iconfont">&#xe681;</i> <a href="/index.php?c=Category&a=add">添加分类</a></li><li><i class="Hui-iconfont">&#xe623;</i> <a href="/index.php?c=Blog&a=lst">日志管理</a></li><li><i class="Hui-iconfont">&#xe70c;</i> <a href="/index.php?c=Blog&a=add">写日志</a></li><li><i class="Hui-iconfont">&#xe634;</i> <a href="/index.php?c=Login&a=logout">退出</a></li>');
+			$("#uname").html(data.username);
+		}
+	}
+});
+</script><!-- 页面主体 -->
+<div id="main_body" class="wrapper cl">
+	<div class="left-col">
+		<h2 class="sub-title">
+			<i class="Hui-iconfont">&#xe667;</i>
+			最新动态
+		</h2>							
+			<ul class="art-list">
+			<li class="clearfix">
+				<img class="face" src="public/image/lion.jpg">	
+				<div class="art-desc">
+				<p class="desc"><a class="title" href='/index.php?c=Index&a=article&id=50003 ' > 第266506 个日志标题</a></p>
+				<p class="desc m"><span class="name">q542684913</span> 发表于：2016-07-10 09:53:51</p>	
+				<div style="width: 100%;height:130px;float: left;">	
+				<img  src=" /Public/Image/wt.jpeg ">				
+				<p class="desc c">第266506 个日志预览</p>
+				</div>
+				<p class="desc d">阅读 0 · 评论 34 · 赞0</p>
+				</div>
+			</li>	
+		</ul>
+			<ul class="art-list">
+			<li class="clearfix">
+				<img class="face" src="public/image/lion.jpg">	
+				<div class="art-desc">
+				<p class="desc"><a class="title" href='/index.php?c=Index&a=article&id=50002 ' > 第266505 个日志标题</a></p>
+				<p class="desc m"><span class="name">q542684913</span> 发表于：2016-07-10 09:53:51</p>	
+				<div style="width: 100%;height:130px;float: left;">	
+				<img  src=" /Public/Image/wt.jpeg ">				
+				<p class="desc c">第266505 个日志预览</p>
+				</div>
+				<p class="desc d">阅读 0 · 评论 34 · 赞0</p>
+				</div>
+			</li>	
+		</ul>
+			<ul class="art-list">
+			<li class="clearfix">
+				<img class="face" src="public/image/lion.jpg">	
+				<div class="art-desc">
+				<p class="desc"><a class="title" href='/index.php?c=Index&a=article&id=50001 ' > 第266504 个日志标题</a></p>
+				<p class="desc m"><span class="name">q542684913</span> 发表于：2016-07-10 09:53:50</p>	
+				<div style="width: 100%;height:130px;float: left;">	
+				<img  src=" /Public/Image/wt.jpeg ">				
+				<p class="desc c">第266504 个日志预览</p>
+				</div>
+				<p class="desc d">阅读 0 · 评论 34 · 赞0</p>
+				</div>
+			</li>	
+		</ul>
+			<ul class="art-list">
+			<li class="clearfix">
+				<img class="face" src="public/image/lion.jpg">	
+				<div class="art-desc">
+				<p class="desc"><a class="title" href='/index.php?c=Index&a=article&id=50000 ' > 第266503 个日志标题</a></p>
+				<p class="desc m"><span class="name">q542684913</span> 发表于：2016-07-10 09:53:50</p>	
+				<div style="width: 100%;height:130px;float: left;">	
+				<img  src=" /Public/Image/wt.jpeg ">				
+				<p class="desc c">第266503 个日志预览</p>
+				</div>
+				<p class="desc d">阅读 0 · 评论 34 · 赞0</p>
+				</div>
+			</li>	
+		</ul>
+			<ul class="art-list">
+			<li class="clearfix">
+				<img class="face" src="public/image/lion.jpg">	
+				<div class="art-desc">
+				<p class="desc"><a class="title" href='/index.php?c=Index&a=article&id=49999 ' > 第266502 个日志标题</a></p>
+				<p class="desc m"><span class="name">q542684913</span> 发表于：2016-07-10 09:53:50</p>	
+				<div style="width: 100%;height:130px;float: left;">	
+				<img  src=" /Public/Image/wt.jpeg ">				
+				<p class="desc c">第266502 个日志预览</p>
+				</div>
+				<p class="desc d">阅读 0 · 评论 34 · 赞0</p>
+				</div>
+			</li>	
+		</ul>
+			<ul class="page">
+		<div class="page"><a href="index.php?p=8">上一页</a><a href="index.php?p=1">1</a><a href="index.php?p=2">2</a> ... <a href='index.php?p=7'>7</a><a href='index.php?p=8'>8</a><a class='active' href='index.php?p=9'>9</a><a href='index.php?p=10'>10</a><a href='index.php?p=11'>11</a> ... <a href="index.php?p=10">下一页</a>共10009页，跳转<form style='display:inline;' action='index.php'><input value='9' type='text' size='3' name='p'>页<input type='submit' value='跳转'></form></div>		</ul>
+	</div>
+	<div class="right-col">
+		<h2 class="sub-title">
+
+			<i class="Hui-iconfont">&#xe6cf;</i>
+			精品排行榜
+		</h2>
+		<ul class="art-paihang">
+								<li><a href='/index.php?c=Index&a=article&id=50043  '>第266546 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50042  '>第266545 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50041  '>第266544 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50040  '>第266543 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50039  '>第266542 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50038  '>第266541 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50037  '>第266540 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50036  '>第266539 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50035  '>第266538 个日志标题</a></li>
+								<li><a href='/index.php?c=Index&a=article&id=50034  '>第266537 个日志标题</a></li>
+							<h2 class="sub-title">
+			<i class="Hui-iconfont">&clubs;</i>
+			热门评论
+		</h2>
+		<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"psv1995"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+		</ul>
+	</div>
+</div>
+
+<!-- 页脚 -->
+<div id="footer" class="wrapper">
+	<span id="footer_title">© 2016逼乎- 与世界分享你的装逼技巧和水平
+</span>
+	<ul id="linker">
+		<li><a href="">PHP的历史</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">联系我们</a></li>
+	</ul>
+</div>
+
+</body>
+</html>
